@@ -1,0 +1,72 @@
+<!--index.wxml-->
+<wxs module="filters" src="/pages/filter.wxs"></wxs>
+<!-- 搜索框部分 -->
+  <van-search 
+  placeholder="请输入搜索关键词" 
+  shape="round" 
+  value="{{ value }}"
+      use-action-slot
+      shape="round"
+      disabled
+      bindtap="clickSearch"
+  />
+
+<!-- 轮播图部分 -->
+<swiper indicator-dots 	autoplay 	circular 	easing-function="easeInOutCubic">
+    <swiper-item wx:for="{{swiperImg}}" wx:key="index">
+      <image src="{{item}}" mode="center" mode="aspectFill" />
+    </swiper-item>
+</swiper>
+   
+<!-- 水果分类导航部分 -->
+<view class="category">
+  <view class="category_view" wx:for="{{fruitTypes}}" wx:key="index" bindtap="navToFruitTypes" data-typeid="{{index}}">
+    <image src="{{item.imgUrl}}" />
+    <text>{{item.name}}</text>
+  </view>
+</view>
+
+<!-- 每日秒杀部分 -->
+<!-- <view class="seckill-section"> -->
+  <!-- 每日秒杀头部 -->
+  <!-- <view class="s-header">
+    <text class="s_img">每日秒杀</text>
+    <text class="countdown_txt">倒计时</text>
+    <van-count-down time="{{ time }}" format="HH:mm:ss" />
+    <navigator url="" class="seckill_more">查看更多></navigator>
+  </view> -->
+<!-- 每日秒杀商品列表 -->
+  <!-- <view class="floor-list">
+    <view class='sec-fruit-col' wx:for="{{goodsList}}" wx:key="index" bindtap="navToDetailPage">
+        <image src="{{item.imgUrl}}" mode="aspectFill"></image>
+        <text class="price-text">￥{{item.price}}</text>
+    </view>
+  </view>
+</view> -->
+
+
+<view class="container">
+  <van-row gutter="10" class="shangpin" >
+    <van-col span="12" wx:for="{{goodList}}" wx:for-item="g" wx:key="index">
+      <view class="goodsCard" bindtap="click_image" id="{{g._id}}">
+        <van-image
+          width="325rpx"
+          height="325rpx"
+          fit="cover"
+          src="{{g.thumbnail}}"
+          radius="15"
+        />
+        <view class="goodsHeadline">{{g.headline}}</view>
+        <view class="prz-n-promotion">
+          <view  style="color:red; margin-left: 3rpx;" >￥ {{filters.toFix(g.price)}}</view>
+          <van-tag type="danger" class="biaoqian" wx:if="{{g.promotion!=null}}">{{g.promotion}}</van-tag>
+        </view>
+        <view class="shopEntrance">
+          <van-icon name="shop-o" />
+          <text class="shopname" style="color: gray;">{{g.shop_name}}</text> 
+          <text class="shopname" style="color: black;" catchtap="goToShop" id="{{g.shop_id}}">进店</text>
+        </view>
+      </view>
+    </van-col>
+  </van-row>
+</view>

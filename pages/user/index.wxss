@@ -1,0 +1,254 @@
+/**index.wxss**/
+page{
+  min-height: 100%;
+  background-color: rgb(250, 245, 245);
+}
+
+.contianer{
+  width: 100%;
+  padding-bottom: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 总的框 */
+.user_info_wrap{
+  /* position: relative; */
+  width: 95%;
+  height: 300rpx;
+  margin-top: 20rpx;
+  background-color: #A1F3C3;
+  /* background: linear-gradient(225deg, #d6f3ed, #038e8d); */
+  border: 2rpx solid rgb(236, 221, 221);
+  border-radius: 30rpx;
+}
+
+.top-canvas{
+  width: 100%;
+  height: 100%;
+
+}
+
+.sign-out{
+  color: grey;
+  font-size: 20rpx;
+  position: absolute;
+  top : 20rpx;
+  right: 30rpx;
+
+}
+
+/* 没有用户信息登录 */
+.user_login_all{
+  width: 200rpx;
+  height: 250rpx;
+  display: flex;
+  flex-direction: column;
+  /* align-content: center; */
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  top:50rpx;
+  left: 80rpx;
+}
+.user_login{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius:50%;
+  background-color: #86d199;
+  /* position: absolute;
+  top:100rpx;
+  left: 40rpx; */
+}
+.user_login_txt{
+  /* position: absolute;
+  left:240rpx;
+  top: 160rpx; */
+  font-weight: 600;
+  color: white;
+  text-shadow: 1px 1px 1px #CB645D;
+  width: 200rpx;
+  text-align: center;
+  overflow: hidden;
+  /* color: rgb(167, 223, 145); */
+}
+/* 用户头像位置 */
+.user_info{
+  /* position: fixed;
+  left:40rpx;
+  top: 70rpx; */
+  justify-content: center;
+}
+/* 背景图片 */
+.user-login-img{
+  width: 100%;
+  height: 300rpx;
+  /* height: 712.5rpx; */
+  border-radius: 30rpx;
+}
+
+/* 我的订单 */
+.order_view{
+  width: 95%;
+  height: 210rpx;
+  margin-top: 20rpx;
+  background-color:white;
+  border-radius: 30rpx;
+  border: 2rpx solid rgb(236, 221, 221);
+}
+.my_goods{
+  width: 95%;
+  position: relative;
+  left: 20rpx;
+  display: flex;
+  height: 70rpx;
+  align-items: center;
+  padding:10rpx 20rpx 10rpx 20rpx ;
+  border-bottom: 1rpx solid rgb(197, 194, 194);
+}
+.my_goods .my_goods_txt{
+  width: 200rpx;
+  margin-left: 20rpx;
+  font-size: 34rpx;
+}
+.my_goods .my_goods_more{
+  float: left;
+  margin-left: 260rpx;
+  padding: 4rpx 10rpx;
+  font-size: x-small;
+  color: gray !important;
+  border-radius: 0 10rpx 10rpx 0;
+  font-size: x-small !important;
+}
+
+.btn-container {
+  display: flex;
+  margin-top: 25rpx;
+  padding: 0 30rpx 0 10rpx;
+}
+
+.icon-wrap {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.icon-wrap image {
+  width: 60rpx;
+}
+
+.icon-wrap text {
+  font-size: x-small;
+}
+
+.section-three {
+  width: 95%;
+  display: flex;
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+  flex-direction: column;
+  border-radius: 30rpx;
+  background-color: white;
+  border: 2rpx solid rgb(236, 221, 221);
+}
+
+.list {
+  height: 80rpx;
+}
+
+.list-l {
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  font-size: small;
+  border-bottom: 2rpx solid rgb(236, 221, 221);
+}
+
+.last-li {
+  border-bottom: 2rpx solid transparent;
+}
+
+.list-l image {
+  width: 40rpx;
+  margin-right: 20rpx;
+}
+
+.arrow {
+  margin-left: 460rpx;
+  color: gray;
+  font-size: medium;
+}
+
+.about-us-box{
+  height: 700rpx;
+  width: 500rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx 20rpx 20rpx 20rpx;
+}
+
+.about-us-cellgroup{
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.members-list{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+}
+
+.add-or-edit-store{
+  width: 700rpx;
+  height: 700rpx;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img{
+  width: 100%;
+  display: flex;
+  padding-top: 30rpx;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete-account-box{
+  min-height: 800rpx;
+  min-width: 650rpx;
+  background-color: #FAF5F5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.delete-account-text-box{
+  width: 95%;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #CB645D;
+  margin: 75rpx 20rpx 10rpx 20rpx;
+  /* min-height: 300rpx; */
+}
+
+.delete-account-round-box{
+  width: 95%;
+  min-height: 100rpx;
+  background-color: white;
+  margin: 10rpx 0 10rpx 0;
+  border-radius: 30rpx;
+  padding: 20rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,6 @@
+<view style="width: 100%;">
+  <view style="font-weight: 700;margin: 30rpx;" class="passage-title">{{title}}</view>
+  <view class="article-view">
+    <view wx:for="{{content}}" wx:key="index" style="text-indent:2em; font-size: small;line-height: 60rpx;" class="article-txt">{{item}}</view>
+  </view>
+</view>

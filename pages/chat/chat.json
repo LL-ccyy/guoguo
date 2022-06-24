@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "客服聊天",
+  "component": true,
+  "usingComponents": {
+    "van-toast": "@vant/weapp/toast/index"
+  }
+}

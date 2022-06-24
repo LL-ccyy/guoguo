@@ -1,0 +1,39 @@
+<view class="container">
+<view class="index" wx:for="{{orderList.goodsList.length}}" data-index="{{index}}">
+  <view class="lines">
+						<van-cell>
+							<image class="goods-image" slot="icon" src="{{orderList.goodsList[index].thumbnail}}"></image>
+							<view class="goods-info-box">
+								<view class="goods-title">
+									{{orderList.goodsList[index].headline}}
+								</view>
+                <view class="goods-sub-title">
+									{{orderList.goodsList[index].sortTitle+'	'+orderList.goodsList[index].sortDetail}}
+								</view>
+							</view>
+						</van-cell>
+					</view>
+  <view class="rate">
+    <view class="title">整体评价</view>
+    <view class="star">
+      <van-rate value="{{ stars }}" size="{{ 25 }}" color="#61C4A8" gutter="5" void-icon="star" void-color="#eee" bind:change="onChange" id="{{index}}"/>
+    </view>
+  </view>
+  <view class="comments">
+    <textarea id='advice' name="advice" type="text" maxlength="{{max}}" bindinput="inputs" placeholder="请输入评价内容..." placeholder-class='p_s' id="{{index}}"></textarea>
+    <view class="iamgeRootAll">
+      <block wx:for="{{imgList[index]}}" wx:key="index">
+        <view class="imgItem">
+          <image class="img" src='{{item}}' data-url="{{item}}" mode='aspectFill' bindtap="previewImage"></image>
+          <image class="DeleteImg" bindtap="DeleteImg" src="/images/delete.png" data-index="{{index}}" id="{{index}}"></image>
+        </view>
+      </block>
+      <view wx:if="{{imgList[index].length<4}}" class="imgItem" bindtap="ChooseImage" id="{{index}}">
+        <van-icon name="photograph" size="40px" style="display: flex;justify-content: center;margin-top: 6px;color: rgb(211, 211, 211);" />
+        <text>上传图片</text>
+      </view>
+    </view>
+  </view>
+</view>
+<button bindtap="pub" style="width: 95%;margin-top: 20px;">发布评价</button>
+</view>

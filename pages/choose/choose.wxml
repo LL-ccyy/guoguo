@@ -1,0 +1,19 @@
+<view class="whole">
+  <image class="img" src="/images/logo.jpg" mode="aspectFit"></image>
+  <view wx:if="{{!chooseID}}">
+  <view class="chooseButton">
+  <van-button type="primary" size="large" round color="#86d199" bind:click="want2buy">用户登录</van-button>
+</view>
+<view class="chooseButton">
+  <van-button type="primary" size="large" round color="#86d199" bind:click="want2sell">商户登录</van-button>
+</view>
+</view>
+<!-- <view wx:else>
+  <view class="chooseButton">
+  <van-button type="primary" size="large" round color="#86d199" bind:click="wechatLogin">微信登录</van-button>
+</view>
+<view class="chooseButton">
+  <van-button type="primary" size="large" round color="#86d199" bind:click="testLogin">测试号登录</van-button>
+</view> -->
+<!-- </view> -->
+</view>

@@ -1,0 +1,9 @@
+<view class="demo-box">
+  <view class="title">{{name}}</view>
+  <video id="myVideo" src="{{video}}" danmu-list="{{danmuList}}" enable-danmu controls enable-play-gesture="true"></video>
+  <view >弹幕内容:</view>
+  <input bindblur="bindInputBlur" type="text" placeholder="在此处输入弹幕内容" />
+  <button size="mini" bindtap="bindPlay">播放</button>
+  <button size="mini" bindtap="bindPause">暂停</button>
+  <button bindtap="bindSendDanmu" size="mini" formType="submit">发送弹幕</button>
+</view>

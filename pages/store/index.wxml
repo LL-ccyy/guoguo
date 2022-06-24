@@ -1,0 +1,53 @@
+<wxs module="filters" src="/pages/filter.wxs"></wxs>
+<view class="cu-item" style="background-image: linear-gradient({{bg_color}});border-radius: 25rpx; margin: 30rpx;height: 200rpx;">
+  <image src="{{shopinfo.largePics}}"></image>
+  <view class="name">
+    <view class="titt">
+      <van-icon name="shop-o" />
+      <text decode="true">&ensp;{{shopinfo.shop_name}}&ensp;
+      </text>
+    </view>
+    <view class="text-gray text-sm flex justify-between">
+      <text style="width: 140rpx;">综合体验</text>
+      <van-rate class="pingfen" readonly value="{{ allstar }}" size="20rpx" bind:change="onChange" size="30rpx" color="#61C4A8" void-icon="star" void-color="#eee" />
+    </view>
+  </view>
+</view>
+
+<view class="func">
+  <view class="leftFunc">
+    <van-dropdown-menu active-color="#80cac3" overlay="{{false}}">
+      <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="changeLeft" popup-style="width:720rpx; margin-left:16rpx;" />
+      <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="changeRight" popup-style="width:720rpx; margin-left:16rpx;" />
+      <view class="img" bindtap="showPopup">
+        <van-icon name="apps-o" size="50rpx" />
+      </view>
+    </van-dropdown-menu>
+  </view>
+  <!-- <view class="img"> -->
+  <!-- <image src="/images/kinds.png" bindtap="showPopup"></image> -->
+  <!-- </view> -->
+</view>
+
+<view class="container">
+  <van-row gutter="10" class="shangpin">
+    <van-col span="12" wx:for="{{goodList}}" wx:for-item="g" wx:key="index">
+      <view class="goodsCard" bindtap="click_image" id="{{g._id}}">
+        <van-image width="325rpx" height="325rpx" fit="cover" src="{{g.thumbnail}}" radius="15" />
+        <view class="goodsHeadline">{{g.headline}}</view>
+        <view class="prz-n-promotion">
+          <view style="color:red; margin-left: 3rpx;">￥ {{filters.toFix(g.price)}}</view>
+          <van-tag type="danger" class="biaoqian" wx:if="{{g.promotion!=null}}">{{g.promotion}}</van-tag>
+        </view>
+      </view>
+    </van-col>
+  </van-row>
+</view>
+
+<van-popup show="{{ show }}" position="left" custom-style="width:20%;height:100%" bind:close="onClose">
+
+  <van-sidebar active-key="{{ activeKey }}" bind:change="onSideBarChange">
+    <van-sidebar-item wx:for="{{fruitTypes}}" title="{{item}}" wx:key="index" />
+  </van-sidebar>
+
+</van-popup>

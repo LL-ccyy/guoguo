@@ -1,0 +1,48 @@
+<!--pages/sousuolist/sousuolist.wxml-->
+<wxs module="filters" src="/pages/filter.wxs"></wxs>
+
+<!-- 搜索界面 -->
+<van-search  
+    value="{{ value }}"
+    placeholder="请输入搜索关键词"
+    use-action-slot
+    shape="round"
+    background = "rgba(255, 255, 255, 0)"
+    bind:change="onChange"
+    bind:search="onSearch"
+>
+  <van-button class="search" slot="action"  bind:click="onClick" size="small" round >搜索</van-button>
+</van-search>
+
+<van-sticky>
+  <van-dropdown-menu active-color="#80cac3" >
+    <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="changeLeft"/>
+    <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" bind:change="changeRight"/>  
+  </van-dropdown-menu>
+</van-sticky>  
+
+<view class="container">
+  <van-row gutter="10" class="shangpin" >
+    <van-col span="12" wx:for="{{goodList}}" wx:for-item="g" wx:key="index">
+      <view class="goodsCard" bindtap="click_image" id="{{g._id}}">
+        <van-image
+          width="325rpx"
+          height="325rpx"
+          fit="cover"
+          src="{{g.thumbnail}}"
+          radius="15"
+        />
+        <view class="goodsHeadline">{{g.headline}}</view>
+        <view class="prz-n-promotion">
+          <view  style="color:red; margin-left: 3rpx;" >￥ {{filters.toFix(g.price)}}</view>
+          <van-tag type="danger" class="biaoqian" wx:if="{{g.promotion!=null}}">{{g.promotion}}</van-tag>
+        </view>
+        <view class="shopEntrance">
+          <van-icon name="shop-o" />
+          <text class="shopname" style="color: gray;">{{g.shop_name}}</text> 
+          <text class="shopname" style="color: black;" catchtap="goToShop" id="{{g.shop_id}}">进店</text>
+        </view>
+      </view>
+    </van-col>
+  </van-row>
+</view>

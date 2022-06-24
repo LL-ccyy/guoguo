@@ -1,0 +1,203 @@
+<view class="contianer">
+  <view class="user_info_wrap">
+    <!-- 没有用户信息就登录 -->
+    <view class="user_login_all" wx:if="{{!hasUserInfo}}">
+      <image class="user_login" bindtap="getUI"></image>
+      <text class="user_login_txt">登录</text>
+    </view>
+  <!-- 有用户信息 -->
+    <view wx:else class="uer_img_warp">
+            <!-- 用户头像和昵称 -->
+        <image src="cloud://cloud1-0gtwyi069b662d65.636c-cloud1-0gtwyi069b662d65-1310644662/icons/20220614155042.jpg" class="user-login-img" mode="aspectFill"></image>
+        <view class="user_login_all">
+          <image class="user_login" src="{{userInfo.avatarUrl}}" bindtap="showEnditBox"></image>
+          <text class="user_login_txt">{{userInfo.nickName}}</text>
+        </view>
+    </view>
+    <text class="sign-out" bindtap="signOut">登出</text>
+  </view>
+
+  <!-- 我的订单 -->
+  <view class="order_view">
+    <view class="my_goods">
+      <view class="my_goods_txt">我的订单</view>
+      <view class="my_goods_more" bindtap="jumpNav" data-tabvalue="0">全部订单></view>
+    </view>
+    <view class='btn-container'>
+        <view class='icon-wrap' bindtap='jumpNav' data-tabvalue="1">
+            <image src='/images/order/waitpay.png' mode="widthFix"></image>
+          <text>待付款</text>
+        </view>
+        <view class='icon-wrap' bindtap='jumpNav' data-tabvalue="2">
+            <image src='/images/order/waitto.png'  mode="widthFix"></image>
+          <text>待发货</text>
+        </view>
+        <view class='icon-wrap' bindtap='jumpNav' data-tabvalue="3">
+            <image src='/images/order/waitgoods.png'  mode="widthFix"></image>
+          <text>待收货</text>
+        </view>
+        <view class='icon-wrap' bindtap="jumpNav" data-tabvalue="4">
+            <image src='/images/order/evaluate.png'  mode="widthFix"></image>
+          <text>评价</text>
+        </view>
+        <view class='icon-wrap' bindtap="jumpNav" data-tabvalue="6">
+            <image src='/images/order/backgoods.png'  mode="widthFix"></image>
+          <text>退款/售后</text>
+        </view>
+    </view>
+  </view>
+  <!-- 第三部分 -->
+  <view class="section-three">
+    <!-- <view class="list" bindtap="navToCouponPage">
+        <view class="list-l">
+          <image src="/images/order/youhuiquan.png" mode="widthFix"></image>
+            <text style="margin-right: 26rpx;">优惠券</text>
+            <view class="arrow">></view>
+        </view>
+    </view> -->
+    <view class="list" bindtap="toAddressList">
+        <view class="list-l">
+          <image src="/images/order/address.png" mode="widthFix"></image>
+            <text>地址管理</text>
+            <view class="arrow">></view>
+        </view>
+    </view>
+    <!-- <view class="list" bindtap="toSetting">
+      <view class="list-l">
+          <image src="/images/order/intercalate.png" mode="widthFix"></image>
+          <text>设置中心</text>
+          <view class="arrow">></view>
+      </view>
+    </view> -->
+    <!-- <view class="list" bindtap="toStoreSystem">
+      <view class="list-l">
+          <image src="/images/order/shangjia.png" mode="widthFix"></image>
+          <text>商家系统</text>
+          <view class="arrow">></view>
+      </view>
+    </view> -->
+    <view class="list" bindtap="toHelp">
+      <view class="list-l">
+          <image src="/images/order/kefu.png" mode="widthFix"></image>
+          <text>客服中心</text>
+          <view class="arrow">></view>
+      </view>
+    </view>
+    <view class="list" bindtap="toFavor">
+      <view class="list-l">
+          <image src="/images/order/shoucang.png" mode="widthFix"></image>
+          <text>我的收藏</text>
+          <view class="arrow">></view>
+      </view>
+    </view>
+    <view class="list" bindtap="toAbout">
+      <view class="list-l last-li">
+        <image src="/images/order/about.png" mode="widthFix"></image>
+        <text>关于我们</text>
+        <view class="arrow">></view>
+      </view>
+    </view>
+    <view class="list" bindtap="toDelAccount">
+      <view class="list-l last-li">
+        <image src="/images/logOut.png" mode="widthFix"></image>
+        <text>注销账号</text>
+        <view class="arrow">></view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style="height: 220rpx;padding-bottom:200rpx"
+  bind:close="onClose"
+>
+<view class="kefu">
+  <button open-type="contact">在线客服</button>
+</view>
+</van-popup>
+
+<van-popup
+  show="{{showAboutUs}}"
+  bind:close="onCloseAboutUs"
+  round
+  closeable
+>
+  <view class="about-us-box">
+    <view>关于我们</view>
+    <view style="width: 460rpx; margin-top:50rpx">
+        <van-cell-group custom-class='about-us-cellgroup' border="{{false}}">
+          <van-cell title="项目名称 :" value="菓菓集市" border="{{false}}"  />
+        </van-cell-group>
+        
+        <van-cell-group border="{{false}}">
+          <!-- <van-cell title="队伍名称 :" value="内容" /> -->
+          <van-cell title="队伍赛区 :" value="华南赛区" />
+          <van-cell title="成员列表 :" center="{{false}}">
+            <view  class="members-list">
+              <text style="text-align: center;" decode="{{true}}">张&nbsp;&nbsp;&nbsp;&nbsp;盛&nbsp;&nbsp;(队长)</text>
+              <text style="text-align: center;" decode="{{true}}">陈&nbsp;&nbsp;&nbsp;&nbsp;璐&nbsp;&nbsp;(队员)</text>
+              <text style="text-align: center;" decode="{{true}}">姜亚凤&nbsp;&nbsp;(队员)</text>
+              <text style="text-align: center;" decode="{{true}}">陈藩松&nbsp;&nbsp;(队员)</text>
+            </view>
+          </van-cell>
+          
+        </van-cell-group>
+
+      </view>
+    
+
+  </view>
+
+</van-popup>
+
+<van-popup show="{{ addOrEditStoreShow }}" bind:close="onCloseAES" closeable round>
+	<view	class="add-or-edit-store">
+		<view class="img">
+			<van-image
+			round
+			width="8rem"
+			height="8rem"
+			src="{{img}}"
+			bind:click="changeimg"
+			/>
+			<text>点击上传头像</text>
+		</view>
+		<van-cell-group style="width: 100%;">
+			<van-field
+				label="用户昵称"
+				placeholder="请输入用户昵称"
+				input-align="right"
+				bind:input="inputname"
+				value="{{NickName}}"
+			/>
+		</van-cell-group>
+		<view style="width: 100%;margin-bottom: 0;display: flex;justify-content: center;">
+			<van-button type="primary" size="normal" color="#61C4A8" round="true" bindtap="changeInfo">确认发布</van-button>
+		</view>
+	</view>
+</van-popup>
+
+<van-popup show="{{showDelAccount}}" bind:close="onCloseDelAccount" closeable round>
+  <view style="width: 100%;text-align: center; background-color: #FAF5F5;">您将注销账号</view>
+  <view class="delete-account-box">
+    <view class="delete-account-text-box">您在菓菓集市的身份信息、账号信息等会员权益将被清空且无法恢复。您在菓菓集市的所有交易记录将被清空。</view>
+    <view class="delete-account-round-box">
+      <text style="color:gray; font-size: small;">账号近期不存在交易:您的账号近15天内未有过交易记录、近三个月内未发布过商品等。</text>
+      <text style="color:gray; font-size: small;">账号不存在进行中的违规记录:您的账号不存在正在进行中的违规处罚或限权记录。</text>
+      <text style="color:gray; font-size: small;">账号相关财产权益已结清:您的账号没有在菓菓集市产生的任何财产余额等。</text>
+    </view>
+    <view class="delete-account-round-box">
+      <text style="font-size:small;color:black;font-weight:600">注意：</text>
+      <text style="color:gray; font-size: small;">账号注销：请确保所有交易已完结且无纠纷，账号注销后因历史交易可能产生的退换货、维权相关的资金退回等权益将视作自动放弃。</text>
+    </view>
+    <view style="width: 50%; position: fixed;bottom: 50rpx;">
+      <van-button round type="primary" block bind:click="confermDelete">确认注销</van-button>
+    </view>
+  </view>
+
+</van-popup>
+<van-dialog id="van-dialog" />
+
+

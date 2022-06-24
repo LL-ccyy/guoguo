@@ -1,0 +1,23 @@
+Page{
+  background-color: white;
+
+}
+.whole {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  width: 500rpx;
+  height: 500rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 80rpx;
+}
+
+.chooseButton{
+  width: 100%;
+  /* display: flex;
+  align-items: center; */
+  margin-top: 60rpx;
+}

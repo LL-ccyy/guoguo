@@ -1,0 +1,98 @@
+/* pages/sousuolist/sousuolist.wxss */
+page {
+  width: 100%;
+  padding: 0 0rpx;
+  margin: 0 0 120rpx 0;
+}
+
+.container {
+  width: 100%;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-bottom: 200rpx;
+}
+
+.goodsCard{
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rpx;
+  border-radius: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.shangpin{
+  display: block; 
+    
+}
+
+.goodsHeadline{
+  text-align: left;
+  width: 100%;
+  font-size: 32rpx;
+  height: 84rpx;
+  margin-left: 3rpx;
+  display: -webkit-box;           /*设置为弹性盒子*/
+  -webkit-line-clamp: 2;          /*最多显示2行*/
+  overflow: hidden;               /*超出隐藏*/
+  text-overflow: ellipsis;        /*超出显示为省略号*/
+  -webkit-box-orient: vertical;
+  word-break: break-all;          /*强制英文单词自动换行*/
+}
+
+.prz-n-promotion{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.biaoqian {
+  display: flex; 
+  /* margin-top: 20rpx; */
+ 
+  color:  rgb(0, 206, 103);
+ 
+}
+
+.shopEntrance{
+  width: 100%;
+  display: inline;
+  font-size: small;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.shopname{
+  font-size: mini;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  max-width: 300rpx;
+}
+
+.shangpin.houzhe{
+display: inline;
+}
+
+.shangpin{
+  display: block; 
+  margin-top: 20rpx;
+}
+.van-cell-text{
+  font-size: smaller;
+  text-align: center;
+}
+
+van-search{
+  width: 100%;
+}
+
+van-sticky{
+  width: 100%;
+}
+
+van-row{
+  width: 100%;
+}

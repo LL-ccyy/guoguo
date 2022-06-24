@@ -1,0 +1,58 @@
+page {
+  width: 100%;
+  padding: 0 30rpx;
+  margin: 0 0 120rpx 0;
+}
+
+.container {
+  width: 100%;
+  padding-bottom: 200rpx;
+}
+
+.address-card {
+  width: 100%;
+  margin: 30rpx 0;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  border-radius: 30rpx;
+  background-color: white;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.head image {
+  margin-top: 5rpx;
+  width: 130rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.personalinfo {
+  width: 90%;
+}
+
+/* 评分+购买商品分类 */
+.moreperinfo {
+  display: flex;
+  flex-direction: row;
+}
+
+van-rate {
+  display: flex;
+  margin-left: 25rpx;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.moreperinfo .classfy{
+  font-size: 25rpx;
+  width: 100%;
+  display: flex;
+  padding-top: 8rpx;
+  align-items: center;
+  justify-content: center;
+  color: rgb(150, 151, 166);
+}

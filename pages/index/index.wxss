@@ -1,0 +1,214 @@
+/* 搜索框 */
+.van-search {
+  width: 750rpx;
+}
+
+/* 轮播图 */
+swiper {
+  width: 95%;
+  margin-top: 40rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+
+swiper image {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 30rpx;
+}
+
+/* 分类导航 */
+.category{
+  display: flex;
+	justify-content: space-around;
+	align-items: center;
+  width: 95%;
+  height: 180rpx;
+  margin-top: 35rpx;
+  border-radius: 30rpx;
+  background-color: white;
+}
+
+.category_view{
+  display: flex;
+	flex-direction: column;
+  align-items: center;
+  width: 100rpx;
+  height: 150rpx;
+}
+
+.category image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.category text{
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+/* 每日秒杀 */
+.seckill-section{
+  width: 95%;
+  height: 330rpx;
+  margin-top: 35rpx;
+  padding: 4rpx 3orpx 24rpx;
+  border-radius: 30rpx;
+  background-color: white;
+}
+
+.s-header{
+  display:flex;
+	align-items:center;
+  height: 92upx;
+  padding: 20rpx 20rpx 10rpx 20rpx;
+	line-height: 1;
+}
+
+.s_img{
+  margin-right: 20rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+  font-style: italic;
+  color: #ec1324;
+}
+
+.countdown_txt{
+  display: block;
+  padding: 10rpx;
+  border-radius: 10rpx 0 0 10rpx;
+  background-color: #4a6e4b;
+  color: white;
+  font-size: 25rpx;
+}
+
+
+.van-count-down {
+  float: left;
+  padding: 0 10rpx;
+  border: 1rpx solid gray;
+  color: gray !important;
+  border-radius: 0 10rpx 10rpx 0;
+  font-size: x-small !important;
+}
+
+.seckill_more{
+  width: 200rpx;
+  flex:1;
+  color: gray;
+  text-align: right;
+  font-size: small;
+}
+
+.floor-list{
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  width: 100%;
+}
+
+.sec-fruit-col {
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+}
+
+.floor-list .price-text{
+  display: block;
+  font-size: small;
+  font-weight: 600;
+  margin-left: 18rpx;
+  color: #ec1324;
+  margin-top: 10rpx;
+}
+
+.floor-list image{
+  position: relative;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 20rpx;
+}
+
+
+.container {
+  width: 100%;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-bottom: 200rpx;
+}
+
+.goodsCard{
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rpx;
+  border-radius: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.shangpin{
+  display: block; 
+    
+}
+
+.goodsHeadline{
+  text-align: left;
+  width: 100%;
+  font-size: 32rpx;
+  height: 84rpx;
+  margin-left: 3rpx;
+  display: -webkit-box;           /*设置为弹性盒子*/
+  -webkit-line-clamp: 2;          /*最多显示2行*/
+  overflow: hidden;               /*超出隐藏*/
+  text-overflow: ellipsis;        /*超出显示为省略号*/
+  -webkit-box-orient: vertical;
+  word-break: break-all;          /*强制英文单词自动换行*/
+}
+
+.prz-n-promotion{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.biaoqian {
+  display: flex; 
+  /* margin-top: 20rpx; */
+ 
+  color:  rgb(0, 206, 103);
+ 
+}
+
+.shopEntrance{
+  width: 100%;
+  display: inline;
+  font-size: small;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.shopname{
+  font-size: mini;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  max-width: 300rpx;
+}
+
+.shangpin.houzhe{
+display: inline;
+}
+
+.shangpin{
+  display: block; 
+  margin-top: 20rpx;
+}
+.van-cell-text{
+  font-size: smaller;
+  text-align: center;
+}
+

@@ -1,0 +1,19 @@
+<!--index.wxml-->
+
+<view class="intercalate_wrap">
+    <van-cell-group>
+        <van-cell title="头像" is-link bind:click="showImg"  size="large" >
+            <view class="touximg" bindtap="browse">
+            <image src="/images/backgoods.png" style="width: 80rpx;height:80rpx;"></image>
+            </view>
+        </van-cell>
+        <van-cell title="昵称" value="{{nickname}}" is-link link-type="navigateTo" url="/pages/nickname/nickname" />
+        <van-cell title="性别" is-link bind:click="showPopup" value="{{detail}}" />
+        <van-action-sheet show="{{ show }}" actions="{{ actions }}" bind:close="onClose" bind:select="onSelect"/>
+        <van-cell title="手机号" value="{{phoneNum}}" is-link open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber"/>
+    </van-cell-group>
+</view>
+
+<view  bindtap="loginout" class="del-info-btn" >
+    <van-button plain round block type="primary">用户注销</van-button>
+</view>

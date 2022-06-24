@@ -1,0 +1,31 @@
+<view class="container">
+  <view wx:if="{{!comments}}" style="width: 750rpx;height: 800rpx;display: flex ;flex-direction: column;justify-content: space-between;align-items: center;">
+    <van-empty description="空空如也" />
+  </view>
+<view wx:for="{{comments}}" data-item="item">
+  <view class="address-card">
+    <view class="head">
+      <image src="{{item.avatarUrl}}"></image>
+      <view class="personalinfo">
+          <van-cell title="{{item.nickName}}" value="{{item.time}}" border="{{ false }}" />
+          <view class="moreperinfo">
+            <van-rate readonly value="{{ item.star }}" bind:change="onChange" size="30rpx" color="#61C4A8" void-icon="star" void-color="#eee"/>
+            <view class="classfy">{{item.detail}}
+          </view>
+          </view>
+      </view>
+    </view>
+    <view wx:if="{{item.comments.value}}">
+    <van-cell title="{{item.comments.value}}" />
+  </view>
+  <view wx:else>
+    <van-cell title="该用户没有留下文字评论哦" />
+  </view>
+    <van-grid column-num="{{4}}" border="{{ true }}">
+      <van-grid-item use-slot wx:for="{{ item.media.length }}" wx:for-item="index">
+      <image style="width: 100%; height: 150rpx;" src="{{item.media[index]}}" data-url="{{item.media[index]}}" bindtap="previewImage"/>
+      </van-grid-item>
+    </van-grid>
+  </view>
+</view>
+</view>

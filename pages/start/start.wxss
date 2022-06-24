@@ -1,0 +1,27 @@
+.img-datu {
+  position: relative;
+}
+
+.img-datu .jishi {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.img-datu .jishi  text{
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.img-datu image {
+  width: 100vw;
+  height: 100vh;
+}
+

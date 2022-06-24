@@ -1,0 +1,67 @@
+<wxs module="filters" src="/pages/filter.wxs"></wxs>
+
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab wx:for="{{tabs}}" wx:key="index" title="{{item}}">
+  </van-tab>
+</van-tabs>
+
+<view class="contianer">
+  
+  <view wx:if="{{goodslist.length===0}}" style="width: 750rpx;height: 800rpx;display: flex ;flex-direction: column;justify-content: space-between;align-items: center;">
+    <van-empty description="暂时没有此类商品" />
+  </view>
+	<view wx:for="{{goodslist}}" data-index="{{index}}">
+		<view class="good-list">
+				<van-cell-group inset>
+					<view class="lines">
+					</view>
+					<view class="lines">
+						<van-cell>
+							<image class="goods-image" slot="icon" src="{{item.thumbnail}}"></image>
+							<view class="goods-info-box">
+								<view class="goods-title">
+									{{item.headline}}
+								</view>
+								<view class="prz-n-num">
+									<view style="color:red">
+										￥{{item.price}}
+									</view>
+								</view>
+                <view class="bottom">
+                <view class="sold">
+                <text>已售{{0}}件</text>
+                </view>
+                <text class="more" bindtap="more" data-index="{{index}}">...</text>
+              </view>
+							</view>
+						</van-cell>
+					</view>
+				</van-cell-group>
+		</view>
+	</view>
+</view>
+
+<view wx:if="{{goodslist[changing].goodsStatus==1}}">
+<van-action-sheet
+  show="{{ show }}"
+  actions="{{ actions1 }}"
+  cancel-text="取消"
+  bind:close="onClose"
+  bind:select="onSelect"
+  bind:cancel="onClose"
+/>
+</view>
+<view wx:else>
+  <van-action-sheet
+  show="{{ show }}"
+  actions="{{ actions2 }}"
+  cancel-text="取消"
+  bind:close="onClose"
+  bind:cancel="onClose"
+  bind:select="onSelect"
+/>
+</view>
+
+
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

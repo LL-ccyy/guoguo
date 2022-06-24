@@ -1,0 +1,15 @@
+/* pages/shangjia/passage/index.wxss */
+.passage-title{
+  text-align: center;
+}
+
+.article-view{
+  background-color: white;
+  width: 90%;
+  position: relative;
+  left: 5%;
+}
+
+.article-txt{
+  margin: 20rpx 20rpx;
+}

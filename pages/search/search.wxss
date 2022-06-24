@@ -1,0 +1,81 @@
+/* pages/sousuo/sousuo.wxss */
+page{
+  background-color: #b8e0d5;
+}
+/* 背景颜色 */
+.background {
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size:100% 100%;
+  z-index:-1;
+  }
+  /* 搜索栏样式 */
+.container view{
+  border-radius: 40rpx;
+  /* background:rgba(255, 255, 255, 0.51); */
+}
+/* 搜索栏布局 */
+.container  {
+  padding: 20rpx;
+}
+/* 搜索历史文字布局 */
+.history {  
+  margin-left: 55rpx;
+}
+
+.history-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.hot_txt{
+  width: fit-content;
+  min-width: 100rpx;
+  height: 50rpx;
+  font-size: 25rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid gray;
+  padding: 5rpx 10rpx ;
+  margin-top: 10rpx;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.danger{
+  background-color:#fdee89;
+  border-radius: 10;
+  margin-left: 30rpx;
+}
+.s-container{
+  margin-top: 10rpx;
+  margin-right: 20rpx;
+  margin-left:20rpx;
+  height: 500rpx;
+}
+.hoo{
+  margin-top: 50rpx;
+  margin-left:50rpx;
+}
+
+.vant_cell{
+  height: 74rpx;
+}
+
+   
+/* 历史记录样式 */
+/* .liclass{
+  font-size: 14rpx;
+  line-height: 34rpx;
+  color:#b2b4b3;
+  height: 34rpx;
+  display: block;
+  padding-left: 18rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #dbdbdb;
+} */

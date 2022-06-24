@@ -1,0 +1,94 @@
+<scroll-view>
+  <!-- 背景图片 -->
+  <view class = "content">
+    <!-- <image class = 'background' src = "../../images/bk1.jpg" mode = "aspectFill"></image> -->
+    </view>
+    <!-- 封装 -->
+    <view class="container" >
+
+    <!-- 搜索界面 -->
+    <van-search  
+        value="{{ value }}"
+        placeholder="请输入搜索关键词"
+        use-action-slot
+        shape="round"
+        background = "rgba(255, 255, 255, 0)"
+        bind:change="onChange"
+        focus
+    >
+      <van-button class="search" slot="action"  bind:click="onClick" size="small" round >搜索</van-button>
+    </van-search>
+  </view>
+  <!-- <view class="history">搜索历史</view> -->
+  <!-- 搜索历史 -->
+  <view class="history">
+      <!-- 历史搜索标题 -->
+      <view class="his_head">
+        <van-row>        
+          <van-col span="20">          
+            <view class="his_title" style="font-weight: 600 ; font-size: large;">搜索历史</view>        
+          </van-col>
+          <van-col span="4">
+            <view  class="user"   style="color: grey ;" bindtap="hisDel">            
+              <van-icon name="delete-o"/>清空         
+            </view>        
+          </van-col>      
+        </van-row>
+      </view>
+      <!-- END -->
+      <!-- 历史搜索内容 -->    
+      <view class="history-box">
+        <view class="hot_txt" wx:for="{{searchRecord}}" wx:key="hisTxt" block >
+          <text style="margin-right: 10rpx;" id="{{index}}" bindtap="onClickHistory">{{item}}</text>
+          <van-icon name="close" size="40rpx" color="gray" bind:click="deleteSingleHis" id="{{item}}"/>
+        </view>
+        <view wx:if="{{searchRecord.length == 0}}" style="color: grey ; font-size: small;">你还没有搜索记录</view>
+        </view>    
+      </view>
+
+  <!-- 爆款推荐框 可滑动 -->
+  <view> <van-icon class="hoo" name="fire"  color="red" />今日热卖</view>
+  <swiper class="s-container" >
+    <swiper-item>
+      
+      <van-cell-group  inset custom-style="border-radius:30rpx">   
+      <view wx:for="{{SearchList}}" data-item="{{item}}" data-index="{{index}}">
+      <view class="vant_cell">
+          <van-cell 
+            is-link
+            icon="{{icons[index]}}" 
+            id='{{index}}'
+            bind:click="naviToDetail"
+          >
+            <view slot="title" style="font-size: 25rpx;overflow: hidden;width: 520rpx;height: 35rpx;">{{item.headline}}</view>
+          </van-cell>
+        </view>
+      </view>
+      </van-cell-group>
+    </swiper-item>
+    <swiper-item>
+      <!-- <van-cell-group inset>
+       
+       <van-cell  title="{{SearchList[3].headline}}"
+         is-link  
+         link-type="navigateTo"
+         url="/pages/salelist/salelist" 
+         icon="/images/4.jpg" 
+       />
+       <van-cell  title="{{SearchList[4].headline}}" 
+         is-link  
+         link-type="navigateTo"
+         url="/pages/salelist/salelist"
+         icon="/images/5.jpg" 
+       />
+       <van-cell  title="{{SearchList[5].headline}}"
+         is-link
+         link-type="navigateTo"
+         url="/pages/salelist/salelist"
+         icon="/images/6.jpg" 
+       />
+   
+   </van-cell-group> -->
+    </swiper-item>
+  </swiper>
+</scroll-view>

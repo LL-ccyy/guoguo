@@ -1,0 +1,3 @@
+<view bindtap="toindex" class="transbtn">
+  <van-button type="default" block type="primary">1111</van-button>
+</view>

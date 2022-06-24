@@ -1,0 +1,9 @@
+<view class="change-name">
+  <text class="change-name-txt">昵称</text>
+  <view  class="input-nick">
+    <input type="text" name="" id="" placeholder="请输入文字" class="txt-change" value="{{nickname}}"/>
+  </view>
+</view>
+<view class="savenick-btn" bindtap="saveName">
+  <van-button round type="primary" block size="small">保存</van-button>
+</view>

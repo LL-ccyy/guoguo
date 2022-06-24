@@ -1,0 +1,201 @@
+<!-- 至少勾选一个属性 -->
+<van-notice-bar style="width: 100%;" scrollable text="需要上传至少一张图片，且上传的第一张图片将作为商品缩略图，第一个价格作为默认价格" />
+<view class="container">
+<view class="ahead">
+  <view class="comments">
+    <textarea id='advice' name="advice" type="text" maxlength="{{max}}" bindinput="inputs" placeholder="输入商品标题" value="{{headline}}" placeholder-class='p_s'></textarea>
+    <view class="iamgeRootAll">
+      <block wx:for="{{imgList}}" wx:key="index">
+        <view class="imgItem">
+          <image class="img" src='{{item}}' data-url="{{item}}" mode='aspectFill' bindtap="previewImage"></image>
+          <view wx:if="{{change!=1}}">
+          <image class="DeleteImg" bindtap="DeleteImg" src="/images/delete1.png" data-index="{{index}}"></image>
+          </view>
+        </view>
+      </block>
+      <view wx:if="{{change!=1}}">
+      <view wx:if="{{imgList.length<4}}" class="imgItem" bindtap="ChooseImage">
+        <van-icon name="photograph" size="40px" style="display: flex;justify-content: center;margin-top:12rpx;color: rgb(192, 192, 192);" />
+        <text>上传图片</text>
+        <!-- <image class="photo" src="/images/add.png"></image> -->
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <picker mode="selector" range="{{oneItems}}" bindchange="selectorChange">
+  <view class="tag">
+    <view>标签: {{selector}}</view>
+  </view>
+  </picker>
+</view>
+
+
+<view class="chooseSize">
+  <van-cell title="添加规格"/>
+  <van-switch checked="{{ checked }}" bind:change="onChange_checked"  size="50rpx" active-color="#61C4A8"/>
+</view>
+<view wx:if="{{checked}}" class="addSize">
+  <van-cell title="水果属性选择" is-link value="编辑" bind:click="showPopup"/>
+  <van-checkbox-group value="{{ result }}" bind:change="onChange_checkbox">
+  <view class="checkbox">
+    <checkbox-group style="width: 100%;display: flex;flex-direction: row;" bindchange="checkboxChange" >
+  <view class="right_checkbox">
+    <checkbox style="padding-left: 20rpx;" value="{{Kind1}}" checked="{{check1}}" bindtap="tap_check1"/>{{Kind1}}
+  <!-- <van-checkbox name="{{Kind1}}" checked-color="#61C4A8">{{Kind1}}</van-checkbox> -->
+</view>
+  <view class="right_checkbox">
+    <checkbox value="{{Kind2}}" checked="{{check2}}" bindtap="tap_check2"/>{{Kind2}}
+  <!-- <van-checkbox name="{{Kind2}}" checked-color="#61C4A8">{{Kind2}}</van-checkbox> -->
+</view>
+</checkbox-group>
+</view>
+</van-checkbox-group>
+</view>
+
+
+<view wx:if="{{!checked}}" class="mid_price">
+  <van-cell-group> 
+  <van-field
+    label="价格"
+    placeholder="请输入价格"
+    input-align="right"
+    bind:change="onChangeOnlyPrice"
+    value="{{OnlyPrice}}"
+  />
+</van-cell-group>
+<text>元</text>
+</view>
+<view wx:if="{{!checked}}" class="mid_num">
+<van-cell-group>
+  <van-field
+    label="库存"
+    placeholder="请输入库存"
+    input-align="right"
+    bind:change="onChangeOnlyNum"
+    value="{{OnlyNum}}"
+  />
+</van-cell-group>
+<text>件</text>
+</view>
+
+
+
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 45%"
+  bind:close="onClose">
+  <view wx:if="{{result.length==2}}" class="changeSize">
+  <van-field
+    label="属性1"
+    value="{{Kind1}}"
+    input-align="right"
+    bind:input="getKind1"
+  />
+  <van-field
+    label="属性2"
+    value="{{Kind2}}"
+    input-align="right"
+    bind:input="getKind2"
+  />
+</view>
+<view wx:else class="changeSize">
+  <van-field
+    label="属性1"
+    value="{{result[0]}}"
+    input-align="right"
+    bind:input="getKind{{index+1}}"
+  />
+</view>
+
+<view style="position:fixed; bottom:0;width: 100%">
+  <van-button type="primary" size="large" color="#61C4A8" round="true" bind:click="setkind">确定</van-button>
+</view>
+</van-popup>
+
+<view wx:if="{{checked}}">
+<block wx:for="{{sizenum}}">
+<view class="size">
+<view class="size_headline">
+<text class="size_name">规格{{index+1}}</text>
+<text class="size_delete" bindtap="deletesize" data-index="{{index}}">删除</text>
+</view>
+<view wx:if="{{result.length==2}}">
+<van-field
+    data-index="{{index}}"
+    value="{{sizeList[index].detail}}"
+    label="{{Kind1}}"
+    placeholder="请输入{{Kind1}}"
+    input-align="right"
+    bind:change="onChangeDetail"
+  />
+  <view wx:if="{{sizeList[index]['sort-title']}}">
+  <van-field
+    data-index="{{index}}"
+    value="{{sizeList[index]['sort-title']}}"
+    label="{{Kind2}}"
+    placeholder="请输入{{Kind2}}"
+    input-align="right"
+    bind:change="onChangeSorttitle"
+  />
+</view>
+<view wx:else>
+  <van-field
+    data-index="{{index}}"
+    label="{{Kind2}}"
+    placeholder="请输入{{Kind2}}"
+    input-align="right"
+    bind:change="onChangeSorttitle"
+  />
+</view>
+</view>
+<view wx:elif="{{result.length==1&&result[0]}}">
+  <van-field
+    data-index="{{index}}"
+    label="{{result[0]}}"
+    placeholder="请输入{{result[0]}}"
+    input-align="right"
+    bind:change="onChangeDetail"
+  />
+</view>
+</view>
+<view class="bott_price">
+  <van-cell-group>
+  <van-field
+    data-index="{{index}}"
+    value="{{sizeList[index].price}}"
+    label="价格"
+    placeholder="请输入价格"
+    input-align="right"
+    bind:change="onChangePrice"
+  />
+</van-cell-group>
+<text>元</text>
+</view>
+<view class="mid_num">
+<van-cell-group>
+  <van-field
+    data-index="{{index}}"
+    value="{{sizeList[index].num}}"
+    label="库存"
+    placeholder="请输入库存"
+    input-align="right"
+    bind:change="onChangeNum"
+  />
+</van-cell-group>
+<text>件</text>
+</view>
+</block>
+<view class="add_size">
+<van-cell title="增加规格" icon="plus" bindtap="addsize"/>
+</view>
+</view>
+
+<!-- ！！！ -->
+<!-- 发布时判断选择几个属性 -->
+<view style="position:fixed; bottom:50rpx;width: 90%;margin-left: 5%;margin-right: 5%;">
+  <van-button type="primary" size="large" color="#61C4A8" round="true" bindtap="pub">确认发布</van-button>
+</view>
+</view>

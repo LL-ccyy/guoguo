@@ -1,0 +1,80 @@
+<view class="container">
+  <view wx:if="{{shopList.length===0}}" style="width: 750rpx;height: 800rpx;display: flex ;flex-direction: column;justify-content: space-between;align-items: center;">
+    <van-empty description="空空如也" />
+  </view>
+  <view wx:else style="width: 100%;display: flex;flex-direction: column;align-items: center; padding-top: 20rpx;">
+    <view wx:for="{{shopList}}" data-index="{{index}}" wx:key="index" class="good-list">		
+				<van-cell-group>
+					<view class="lines">
+						<view class="chooseicon" bindtap="chooseShop" id="{{index}}">
+							<icon wx:if="{{item.selected===null?false:item.selected}}" class='cart-icon' type="success" color="red"/>
+							<icon wx:else type="circle" class='cart-icon'/>
+						</view>
+						<view class="shopname">
+							<van-cell title="{{item.shopName}}" icon="shop-o" is-link url="{{'../store/index?shop_id='+item.shopID}}"/>
+						</view>
+					</view>
+					<van-swipe-cell right-width="{{ 65 }}" class="swipe-cell-box" wx:for="{{item.goodsList}}" wx:for-item="goodsdetail" wx:key="index" wx:for-index="index2">
+						<view class="lines">
+							<view class="chooseicon" bindtap="tap_cart_choose" data-index="{{[index,index2]}}">
+								<icon wx:if="{{goodsdetail.selected===null?false:goodsdetail.selected}}" class='cart-icon' type="success" color="red" />
+								<icon wx:else type="circle" class='cart-icon'/>
+							</view>
+							<van-cell url="{{'../goods_detail/index?id='+goodsdetail.goodsid}}"	>
+								<image class="goods-image" slot="icon" src="{{goodsdetail.goodsInfo.thumbnail}}"></image>
+								<view class="goods-info-box">
+									<view class="goods-title">
+										{{goodsdetail.goodsInfo.headline}}
+									</view>
+									<!-- 分类选择 -->
+									<view class="goods-sub-title">
+										{{goodsdetail.goodsInfo.sort[goodsdetail.size]["sort-title"]+'	'+goodsdetail.goodsInfo.sort[goodsdetail.size]["detail"]}}
+									</view>
+									<view class="prz-n-num">
+										<view style="color:red">
+											￥{{goodsdetail.goodsInfo.sort[goodsdetail.size]["price"]}}
+										</view>
+										<view wx:if="{{goodsdetail.changeNum}}" style="width: 100%;" catchtap="tapStepper">
+											<van-stepper value="{{ goodsdetail.num }}" integer button-size="50rpx" input-width="58rpx" data-index="{{[index,index2]}}" catch:change="onChange" />
+										</view>
+										<view wx:else 
+													class="num-box" 
+													data-index="{{[index,index2]}}" 
+													catchtap="tap_cart_num">
+											×{{goodsdetail.num}}
+										</view>
+									</view>
+								</view>
+							</van-cell>
+						</view>
+						<view slot="right" class="delect-box" bindtap="onDelete" id="{{goodsdetail._id}}">
+							<view class="delect-btn">
+								<van-icon name="delete" color="white" size="45rpx"/>
+							</view>
+							<text style="color: #ff4040;padding-top: 10rpx; padding-left: 5rpx; font-size: 25rpx;">删除</text>
+						</view>
+					</van-swipe-cell>
+				</van-cell-group>
+				
+
+	  </view>	
+  </view>
+	  
+	<van-submit-bar
+		custom-class="submit-bar1"
+		disabled="{{!submitBtnEnable}}"
+		price="{{ all_price*100 }}"
+		button-text="去结算"
+		bind:submit="onClickButton"
+		safe-area-inset-bottom="{{true}}"
+		tip="{{ true }}">
+		<icon wx:if="{{choose_all}}" class='cart-icon' type="success" color="red" bindtap="chooseAll"/>
+		<icon wx:else type="circle" class='cart-icon' bindtap="chooseAll"/>
+		<text decode="true">&ensp;全选&ensp;</text>
+	</van-submit-bar>
+
+</view>
+
+
+<van-dialog id="van-dialog" />
+

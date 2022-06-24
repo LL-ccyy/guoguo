@@ -1,0 +1,357 @@
+/* 商品图片 */
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-bottom: 100rpx;
+} 
+
+.star{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 0;
+}
+
+.banner {
+  width: 100%;
+  height: 750rpx;
+}
+
+.banner-style1 {
+  height: 750rpx;
+}
+
+.banner image {
+  width: 100%;
+  height: 750rpx;
+}
+
+.banner-style1 .slide-image {
+  width: 100%;
+  height: 750rpx;
+  box-sizing: border-box;
+}
+
+/* 文字区域 */
+.text-info {
+  display: block;
+  width: 100%;
+  margin: 10rpx 30rpx 10rpx 30rpx;
+  padding: 10rpx 20rpx 0;
+}
+
+/* 商品描述 */
+.description {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 250rpx;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+  border-radius: 30rpx;
+  background-color: white;
+  overflow: hidden;
+}
+
+.description text {
+  display: block;
+  font-size: medium;
+}
+
+/* 满减 */
+.description .promotion {
+  display: inline-block;
+  text-align: center;
+  width: 130rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  padding: 8rpx 0;
+  margin-left: 20rpx;
+  border-radius: 30rpx;
+  font-weight: 600;
+  font-size: xx-small !important;
+  background-color: #fff1f0;
+  color: red;
+}
+
+.description>text:first-child {
+  display: inline;
+  color: #53a35d;
+  font-size: larger;
+}
+
+.description-btm-box{
+  margin-top: 10rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.share-btn{
+  padding-right: 0;
+  margin-top: 30rpx;
+  height: 50rpx;
+  width: 50rpx;
+  align-items: center;
+}
+
+/* button[plain]{
+  border: 0;
+} */
+
+/* 评论 */
+.comments {
+  position: relative;
+  width: 100%;
+  padding: 20rpx 40rpx;
+  margin-top: 20rpx;
+  background-color: white;
+  border-radius: 30rpx;
+}
+.head0{
+display: flex;
+flex-direction: row;
+width: 100%;
+height: 60rpx;
+}
+
+.more{
+  display: flex;
+font-size: 55rpx;
+}
+
+
+.comments text {
+  color: #8ab078;
+  font-size: medium;
+}
+
+.comments>text:last-child {
+  font-size: xx-small;
+}
+
+/* button {
+  font-size: x-small;
+  line-height: 60rpx;
+  border-radius: 20rpx;
+  color: white;
+} */
+
+/* 购物车弹窗 */
+.car-modal {
+  position: relative;
+  min-height: 800rpx;
+  padding: 30rpx 30rpx 200rpx 30rpx;
+  border-radius: 30rpx;
+}
+
+.avator-headline{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content :flex-start;
+  padding-right: 50rpx ;
+  padding-top: 50rpx;
+}
+
+.avator {
+  display: inline-block;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 30rpx;
+  background-color: #f4f7cc;
+}
+
+.avator-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 30rpx;
+}
+
+.avator-textbox{
+  width: 500rpx;
+  height: 160rpx;
+  padding-left: 25rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.avator-headline-text{
+  font-size: 18px;
+  width: 500rpx;
+  color:black;
+  font-weight: bold;
+  text-align: left;
+  word-break: break-all;
+  display: -webkit-box; 
+	height: 46px;	
+	overflow: hidden;	
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical; 
+}
+
+.sortDetial-price-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sort-detail-text{
+  font-size: 15px;
+}
+
+.car-modal-price{
+  font-size: 15px;
+  color: #ff4040;
+}
+
+.car-modal-specification{
+  padding-top: 50rpx;
+  padding-bottom: 20rpx;
+}
+
+.text-green {
+  display: block;
+  font-size: medium;
+  color: #6b9253;
+}
+
+.car-modal-btnBox{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding-top: 30rpx;
+}
+
+.car-modal-btn-block{
+  padding-top: 20rpx;
+}
+
+.unselected-btn{
+  display: flex;
+  flex-direction: column;
+  border-radius: 25rpx;
+  height: 50rpx;
+  font-size: 25rpx;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  color: gray;
+  border: 1px solid gray;
+  min-width: 100rpx;
+  padding: 0 25rpx 0 25rpx;
+  margin: 10rpx 20rpx 10rpx 20rpx;
+}
+
+.selected-btn{
+  color: darkseagreen;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25rpx;
+  height: 50rpx;
+  font-size: 25rpx;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  border: 1px solid darkseagreen;
+  min-width: 100rpx;
+  padding: 0 25rpx 0 25rpx;
+  margin: 10rpx 20rpx 10rpx 20rpx;
+}
+
+.car-modal-btn{
+  padding: 10rpx 10rpx;
+}
+
+.gray-line {
+  width: 60%;
+  height: 60rpx;
+  margin-bottom: 20rpx;
+  border-radius: 15rpx;
+  background-color: #e0e9d8;
+}
+
+.car-modal-num{
+  padding-top: 30rpx;
+  padding-bottom: 20rpx;
+}
+
+.car-modal-buttom-btn-box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.car-modal-button {
+  width: 80%;
+  position: absolute;
+  bottom: 40rpx;
+  background-color: #fe3636;
+  color: white;
+  border-radius: 50rpx;
+} 
+
+.address-card {
+  width: 100%;
+  margin: 0;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  background-color: white;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.head image {
+  margin-top: 5rpx;
+  width: 130rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.personalinfo {
+  width: 90%;
+}
+
+/* 评分+购买商品分类 */
+.moreperinfo {
+  display: flex;
+  flex-direction: row;
+}
+
+van-rate {
+  display: flex;
+  margin-left: 25rpx;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.moreperinfo .classfy{
+  font-size: 25rpx;
+  width: 100%;
+  display: flex;
+  padding-top: 8rpx;
+  align-items: center;
+  justify-content: center;
+  color: rgb(150, 151, 166);
+}
+
+.releaseBtn {
+  position: fixed;
+  bottom: 130rpx;
+  right: 30rpx;
+
+}
+

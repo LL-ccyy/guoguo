@@ -1,0 +1,85 @@
+<view class="container">
+  <scroll-view scroll-y="true">
+    <view wx:for="{{list}}"  wx:key="index">
+    <view class="list-box" data-item="{{item}}" >
+      <view class="list-wrap" bindtap="choose" id="{{index}}">
+        <view class="list-name">{{item.name}}
+          <text class="list-txt">{{item.phone}}</text>
+        </view>
+        <view class="address-list">
+          <view class="icon-address">{{item.tag}}</view>
+          <view class="txt-address">{{item.addressDetail}}{{item.addressName}}{{item.detailaddress}}</view>
+        </view>
+      </view>
+      <view class="del-view" >
+        <image class="DeleteImg" bindtap="Deleteaddr" src="/images/delete1.png" data-index="{{index}}"></image>
+        <image src="/images/order/change.png" class="del-img" bindtap="changeaddr" data-index="{{index}}"></image>
+      </view>
+    </view>
+  </view>
+  </scroll-view>
+  <view class="margin"></view>
+
+
+</view>
+
+<view class="new-btn-box" bindtap="addAddress">
+  <view class="new-btn">
+      <van-button round icon="plus" plain type="primary" size="small" block>新建收货地址</van-button>
+  </view>
+</view>
+
+<van-popup show="{{ showAddAddr }}"
+            round
+            closeable
+            position="bottom"
+            safe-area-inset-bottom="true"
+            bind:close="onClose">
+  <view class="add-addr-container">
+    <view class="newlist-wrap">
+      <view class="top-boxs">
+        <view class="positiong-list">
+          <view class="newlist-name">地址</view>
+          <view class="detail-name" bindtap="choosePost">
+            <input placeholder="选择收货地址" class="input-tag" type="text" value="{{addressName}}"/>
+          </view>
+        </view>
+        <view class="positiong-list">
+          <view class="newlist-name">门牌号</view>
+          <view class="detail-name">
+            <input placeholder="请填写详细地址" class="input-tag" type="text" bindinput="getdetailaddress" value="{{detailaddress}}"/>
+          </view>
+        </view>
+        <view class="positiong-list">
+          <view class="newlist-name flag-list">标签</view>
+          <view class="tag-list">
+            <view wx:for="{{labelList}}" wx:key="index">
+              <view class="{{labelDefault==index? 'labels-active': 'labels'}}" data-index="{{index}}" bindtap="chooseLabelSelect">{{item}}</view> 
+            </view>
+          </view>
+        </view>
+    </view>
+    <view class="info-detail">
+      <view class="positiong-list">
+        <view class="newlist-name">收货人</view>
+        <view class="detail-name">
+          <input placeholder="姓名" class="input-tag" type="text" bindinput="getname" value="{{name}}"/>
+        </view>
+      </view>
+      <view class="positiong-list">
+        <view class="newlist-name">手机号</view>
+        <view class="detail-name">
+          <input placeholder="收货人手机号" class="input-tag" type="text" bindinput="getphone" value="{{phone}}"/>
+        </view>
+      </view>
+    </view>
+      </view>
+      
+    <view class="save-btn-box">
+      <view class="save-btn" bindtap="save">
+        <van-button round type="primary" block>保存</van-button>
+      </view>
+    </view>
+  </view>
+  
+</van-popup>

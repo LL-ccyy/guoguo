@@ -1,0 +1,97 @@
+
+
+<view class="item-study">
+  <van-tabs active="{{ active }}">
+    <van-tab title="惠农政策" name='0'>
+      <view class="inline-stydy"  wx:for="{{list}}" wx:key="index" data-title="{{item.title}}" data-url="{{item.url}}" data-time="{{item.time}}" bindtap="getPage">
+        <view class="titles-item">
+          <text class="item-txt">{{item.title}}</text>
+        </view>
+        <view class="time-item">
+          <text class="item-show">发布时间：{{item.time}}</text>
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="视频学习" name='1'>
+      <view class="video-study" data-index="0" bindtap="getVedio">
+        <view class="video-img">
+          <image class="item-img" src="cloud://cloud1-0gtwyi069b662d65.636c-cloud1-0gtwyi069b662d65-1310644662/videoImg/微信图片_20220624170939.png"></image>
+        </view>
+        <view class="right">
+         <view class="video-title">
+          <text class="txt-title">乡村力量 | 微信工艺助农培训班</text>
+         </view>
+         <view class="video-time">
+          <text class="txt-time">2020-09-22</text>
+         </view>
+        </view>
+      </view>
+      <view class="video-study" data-index="1" bindtap="getVedio">
+        <view class="video-img">
+          <image class="item-img" src="cloud://cloud1-0gtwyi069b662d65.636c-cloud1-0gtwyi069b662d65-1310644662/videoImg/微信图片_20220624171658.png"></image>
+        </view>
+        <view class="right">
+         <view class="video-title">
+          <text class="txt-title">盘山县：“一村一品”特色产业助农增收</text>
+         </view>
+         <view class="video-time">
+          <text class="txt-time">2020-09-22</text>
+         </view>
+        </view>
+      </view>
+      <view class="video-study" data-index="2" bindtap="getVedio">
+        <view class="video-img">
+          <image class="item-img" src="cloud://cloud1-0gtwyi069b662d65.636c-cloud1-0gtwyi069b662d65-1310644662/videoImg/微信图片_20220624172918.png"></image>
+        </view>
+        <view class="right">
+         <view class="video-title">
+          <text class="txt-title">丰收了好村光｜不开美颜的“金”苹果</text>
+         </view>
+         <view class="video-time">
+          <text class="txt-time">2021-10-30</text>
+         </view>
+        </view>
+      </view>
+      <view class="video-study" data-index="3" bindtap="getVedio">
+        <view class="video-img">
+          <image class="item-img" src="cloud://cloud1-0gtwyi069b662d65.636c-cloud1-0gtwyi069b662d65-1310644662/videoImg/微信图片_20220624171935.png"></image>
+        </view>
+        <view class="right">
+         <view class="video-title">
+          <text class="txt-title">小伙公益助农，果园里摘蜜桔，讲授挑选蜜桔的秘诀</text>
+         </view>
+         <view class="video-time">
+          <text class="txt-time">2020-10-26</text>
+         </view>
+        </view>
+      </view>
+      <view class="video-study" data-index="4" bindtap="getVedio">
+        <view class="video-img">
+          <image class="item-img" src="cloud://cloud1-0gtwyi069b662d65.636c-cloud1-0gtwyi069b662d65-1310644662/videoImg/微信图片_20220624172130.png"></image>
+        </view>
+        <view class="right">
+         <view class="video-title">
+          <text class="txt-title">农村小伙地里徒手拔甘蔗，又大又长，比糖还甜！</text>
+         </view>
+         <view class="video-time">
+          <text class="txt-time">2020-10-22</text>
+         </view>
+        </view>
+      </view>
+      <view class="video-study" data-index="5" bindtap="getVedio">
+        <view class="video-img">
+          <image class="item-img" src="cloud://cloud1-0gtwyi069b662d65.636c-cloud1-0gtwyi069b662d65-1310644662/videoImg/微信图片_20220624172508.png"></image>
+        </view>
+        <view class="right">
+         <view class="video-title">
+          <text class="txt-title">甘蔗怎么做糖，阿婆用3小时熬出8斤糖</text>
+         </view>
+         <view class="video-time">
+          <text class="txt-time">2022-01-14</text>
+         </view>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>
+<view class="null"></view>

@@ -1,0 +1,41 @@
+<view class="container">
+  <view wx:if="{{goodslist.length===0}}" style="width: 750rpx;height: 800rpx;display: flex ;flex-direction: column;justify-content: space-between;align-items: center;">
+    <van-empty description="空空如也" />
+  </view>
+	<view wx:for="{{goodslist}}" data-index="{{index}}">
+		<view class="good-list">
+			<van-swipe-cell right-width="{{ 65 }}" class="swipe-cell-box">
+				<van-cell-group inset>
+					<view class="lines">
+					</view>
+					<view class="lines">
+						<van-cell>
+							<image class="goods-image" slot="icon" src="{{item.thumbnail}}"></image>
+							<view class="goods-info-box">
+								<view class="goods-title">
+									{{item.headline}}
+								</view>
+								<view class="prz-n-num">
+									<view style="color:red">
+										￥{{item.price}}
+									</view>
+								</view>
+							</view>
+						</van-cell>
+					</view>
+				</van-cell-group>
+				<view slot="right" class="delect-box" bindtap="onDelete" id="{{index}}">
+					<view class="delect-btn">
+						<van-icon name="delete" color="white" size="45rpx"/>
+					</view>
+					<text style="color: #ff4040;padding-top: 10rpx; padding-left: 5rpx; font-size: 25rpx;">删除</text>
+				</view>
+			</van-swipe-cell>
+
+			
+		</view>
+	</view>
+</view>
+
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

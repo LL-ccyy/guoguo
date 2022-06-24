@@ -1,0 +1,134 @@
+<!--index.wxml-->
+<wxs module="filters" src="/pages/filter.wxs"></wxs>
+
+<!-- page-meta 只能是页面内的第一个节点 -->
+<page-meta page-style="{{ selectBoxShow ? 'overflow: hidden;' : '' }}" />
+
+<view class="container">
+  <view class="banner">
+    <swiper bindchange="bindchange" class="banner banner-style1" indicator-dots="{{false}}" autoplay="{{false}}" current="{{current}}" circular="{{true}}" interval="3000" duration="1000" display-multiple-items="1">
+        <swiper-item class="item" wx:for="{{good.largePics}}" wx:key="index">
+            <image bindtap="previewImage" data-src="{{item}}" src="{{item}}" class="slide-image" mode="aspectFit" />
+        </swiper-item>
+    </swiper>
+  </view>
+  <view class="text-info">
+    <view class="description">
+    <view style="display: flex;flex-direction: row;">
+      <text wx:if="{{good.price!=null}}" class="text-green" style="width: 30%;">￥{{filters.toFix(good.price)}}</text>
+      <view wx:if="{{ good.star }}">
+        <van-rate class="star" readonly value="{{ good.star }}" size="30rpx" color="#61C4A8"/>
+      </view>
+      <view wx:else>
+        <text style="color: gray;font-size: 20rpx;font-weight: 100; width: 250rpx; display: flex; justify-content: center;margin-top: 10rpx;">暂时没有人评分</text>
+      </view>
+      <text style="color: gray;font-size: 20rpx;font-weight: 100; margin-left: 18%;margin-top: 10rpx;">销量{{good.sold}}件</text>
+    </view>
+      <view style="display: flex;flex-direction: row;width: 100%;">
+      <text style="margin-top: 20rpx; width: 100%;">{{good.headline}}</text>
+      <!-- <button open-type='share' class="share-btn" style="color: white;" plain>
+          <text style="color: #53a35d; width: 230rpx;font-size: 30rpx;">分享</text> 
+          <van-icon name="share" color="#53a35d" size="30rpx" />
+        </button> -->
+      </view>
+
+      
+      <!-- <view style="display: flex;flex-direction: row;justify-content:flex-end;width: 100%;">
+        <view style="width: 200rpx;">
+          <van-button open-type='share' icon="share" block plain custom-style="share-btn"></van-button>
+        </view>
+      </view> -->
+    </view>
+    <view style="border-radius:30rpx;background-color: white; padding-bottom: 20rpx;">
+    <view class="comments">
+    <view class="head0">
+      <text style="width: 75%;">评价({{comments}})</text>
+      <text class="more" bindtap="navToCommentsPage">查看全部</text>
+    </view>
+
+    </view>
+    <view wx:if="{{commentsTempImg}}" class="address-card">
+    <view class="head">
+      <image src="{{commentsTempImg}}"></image>
+      <view class="personalinfo">
+          <van-cell title="{{commentsTempNickName}}" value="{{commentsTemp.time}}" border="{{ false }}" />
+          <view class="moreperinfo">
+            <van-rate readonly value="{{ commentsTemp.star }}" bind:change="onChange" size="30rpx" color="#61C4A8" void-icon="star" void-color="#eee"/>
+            <view class="classfy">{{commentsTemp.detail}}
+          </view>
+          </view>
+      </view>
+    </view>
+    <view wx:if="{{commentsTemp.comments.value}}">
+    <van-cell title="{{commentsTemp.comments.value}}" />
+  </view>
+  <view wx:else>
+    <van-cell title="该用户没有留下文字评论哦" />
+  </view>
+    <van-grid column-num="{{4}}" border="{{ true }}">
+      <van-grid-item use-slot wx:for="{{ commentsTemp.media.length }}" wx:for-item="index">
+      <image style="width: 100%; height: 150rpx;" src="{{commentsTemp.media[index]}}" data-url="{{commentsTemp.media[index]}}" bindtap="previewCommentsImg"/>
+      </van-grid-item>
+    </van-grid>
+  </view>
+  <view wx:else>
+    <van-empty description="暂时还没有评论哦" />
+  </view>
+</view>
+  </view>
+  <van-goods-action>
+    <van-goods-action-icon icon="chat-o" text="客服" bindtap="navToChat"/>
+    <van-goods-action-icon icon="{{star}}" text="收藏" bindtap="onStar"/>
+    <van-goods-action-icon icon="shop-o" text="店铺" bindtap="navToStorePage"/>
+    <van-goods-action-button text="加入购物车" type="warning" bindtap="addToCart" />
+    <van-goods-action-button text="立即购买"  bindtap="navToOrderPage" />
+  </van-goods-action>
+  <van-popup show="{{ selectBoxShow }}" bind:close="onClose" position="bottom" closeable round>
+    <view class="car-modal">
+      <view class="avator-headline">
+        <view class="avator">
+          <image class="avator-img" src="{{good.thumbnail}}" mode="aspectFill"></image>
+        </view>
+        <view class="avator-textbox">
+          <text class="avator-headline-text">{{good.headline}}</text>
+          <view class="sortDetial-price-box">
+            <view class="sort-detail-text" wx:if="{{!(typeof(good.sort)==='undefined'||good.sort.length===0)}}">详情：{{sortDetail}}</view>
+            <view class="sort-detail-text" wx:else> </view>
+            <view class="car-modal-price" >￥{{filters.toFix(sortPrice)}}</view>
+          </view>
+        </view>
+        <!-- <text style="position: absolute; left: 260rpx; top: 100rpx">￥95.55</text> -->
+      </view>
+      
+      <view class="car-modal-specification" wx:if="{{!(typeof(good.sort)==='undefined'||good.sort.length===0)}}">
+        <text class="text-green">规格</text>
+        <view class="car-modal-btnBox">
+          <!-- <block class="car-modal-btn-block"> -->
+            <view class='{{index != selectedIndex ? "unselected-btn":"selected-btn"}}'  wx:for="{{good.sort}}" wx:key="index"
+                        id="{{index}}" bindtap="changeSelectedIndex">
+              {{item["sort-title"]}}
+            </view>
+          <!-- </block> -->
+        </view>
+      </view>
+     <view class="car-modal-num">
+      <text class="text-green" style="display: inline-block;">数量</text>
+      <van-stepper value="{{ 1 }}" integer style="float: right;" bind:change="onSelectedNumChange"/>
+     </view>
+     <view class="car-modal-buttom-btn-box">
+      <button class="car-modal-button" bindtap="afterSelect">确定</button>
+     </view>
+    </view>
+  </van-popup>
+</view>
+
+<van-toast id="van-toast" />
+
+<view class="releaseBtn">
+  <van-button round color="#5E9E62" icon="share" open-type='share' size='normal'>
+  </van-button>
+      <!-- <button open-type='share' class="share-btn" style="color: white;height:130rpx;width:130rpx;border-radius: 50%;">
+          <text style="color: #53a35d; width: 230rpx;font-size: 30rpx;">分享</text> 
+          <van-icon name="share" color="#53a35d" size="30rpx" />
+        </button> -->
+</view>

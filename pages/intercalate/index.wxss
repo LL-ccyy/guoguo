@@ -1,0 +1,23 @@
+/**index.wxss**/
+
+.intercalate_wrap{
+  width: 95%;
+  height: 400rpx;
+  margin-top: 30rpx;
+  border-radius: 20rpx;
+}
+
+.touximg{
+  width: 80rpx;
+  height:80rpx;
+  position: absolute;
+  right: 80rpx;
+  top: 15rpx;
+}
+/* 用户注销 */
+.del-info-btn{
+  width: 95%;
+  height: 100rpx;
+  position:fixed;
+  top: 500rpx;
+}

@@ -1,0 +1,125 @@
+<view	class="container" wx:if="{{thereIsShopInfo}}"> 
+	<view class="top-box">
+    <image src="cloud://cloud1-0gtwyi069b662d65.636c-cloud1-0gtwyi069b662d65-1310644662/icons/20220614155042.jpg" class="user-login-img" mode="aspectFill"></image>
+		<view class="topBox-uer_img_warp">
+      <view class="topBox-user_login_all">
+        <image class="topBox-user_login" src="{{shopdata.largePics}}" bindtap="showEnditBox"></image>
+        <text class="topBox-user_login_txt" bindtap="showEnditBox">{{shopdata.shop_name}}</text>
+      </view>
+  	</view>
+	</view>
+	<view	class="orders-card">
+		<view	class="top-line" bindtap="goToOrders" id="0">
+			<text	style="font-size: medium;font-weight: bold;">待处理</text>
+			<text style="color: gray;">所有订单 ></text>
+		</view>
+		<view class="second-line">
+			<view	class="little-card-upNdown" bindtap="goToOrders" id="1">
+				<text	class="little-card-upNdown-text1">{{unpayed}}</text>
+				<text class="little-card-upNdown-text2">待付款</text>
+			</view>
+			<view class="little-card-upNdown" bindtap="goToOrders" id="2">
+				<text class="little-card-upNdown-text1">{{unsent}}</text>
+				<text class="little-card-upNdown-text2">待发货</text>
+			</view>
+			<view class="little-card-upNdown" bindtap="goToOrders" id="5">
+				<text class="little-card-upNdown-text1">{{refund}}</text>
+				<text class="little-card-upNdown-text2">售后中</text>
+			</view>
+		</view>
+	</view>
+	<view	class="orders-card">
+		<view	class="top-line" bindtap="goToGoods" id="0">
+			<text	style="font-size: medium;font-weight: bold;">我的商品</text>
+			<text style="color: gray;">全部商品 ></text>
+		</view>
+		<view class="second-line">
+			<view	class="little-card-upNdown" bindtap="goToGoods" id="1">
+				<text	class="little-card-upNdown-text1">{{onsale}}</text>
+				<text class="little-card-upNdown-text2">销售中</text>
+			</view>
+			<view class="little-card-upNdown" bindtap="goToGoods" id="2">
+				<text class="little-card-upNdown-text1">{{down}}</text>
+				<text class="little-card-upNdown-text2">已下架</text>
+			</view>
+			<view class="little-card-upNdown" bindtap="addGoods">
+				<view class="upload-Img">
+					<van-icon name="add-o" color="green" size="40rpx"/>
+				</view >
+				<text class="little-card-upNdown-text2">上传商品</text>
+			</view>
+		</view>
+	</view>
+	<view	class="orders-card">
+		<view	class="top-line">
+			<text	style="font-size: medium;font-weight: bold;">助农政策</text>
+			<text style="color: gray;"> </text>
+		</view>
+		<view style="width: 100%; justify-content: center;align-content: center;display: flex;flex-direction: row;">
+			<view class="second-box">
+				<view	class="small-gray-box" bindtap="policyBoxClick" id="0">政策浏览</view>
+				<view class="small-gray-box" bindtap="policyBoxClick" id="1">视频学习</view>
+			</view>
+		</view>
+		
+	</view>
+
+	<view	class="orders-card">
+		<view	class="top-line">
+			<text	style="font-size: medium;font-weight: bold;">帮助中心</text>
+			<text style="color: gray;"> </text>
+		</view>
+		<view style="width: 100%; justify-content: center;align-content: center;display: flex;flex-direction: row;">
+			<view class="second-box">
+				<!-- <view	class="small-gray-box" bindtap="policyBoxClick" id="0">官方客服</view>
+				<view class="small-gray-box" bindtap="policyBoxClick" id="1">视频学习</view> -->
+        <view class="small-gray-box" >
+          <button plain style="color: black; font-size: 30rpx;" open-type="contact">官方客服</button>
+        </view>
+				<view class="small-gray-box" >
+          <button plain style="color: black; font-size: 30rpx;" bindtap="author">订阅消息</button>
+        </view>
+			</view>
+		</view>
+		
+	</view>
+	<text style="color: grey;font-size: 20rpx;padding-top: 100rpx;" bindtap="signOut">退出登录></text>
+</view>
+
+<view class="container2" wx:else>
+	<view	class="add-store-box"	bindtap="showEnditBox">
+		<image	src="/images/more.png" class="add-img"></image>
+		<view	class="add-store-box-textbox">
+			<text class="add-store-box-text">您还没有店铺</text>
+			<text class="add-store-box-text">请新建店铺</text>
+		</view>
+	</view>
+</view>
+
+<van-popup show="{{ addOrEditStoreShow }}" bind:close="onCloseAES" closeable round>
+	<view	class="add-or-edit-store">
+		<view class="img">
+			<van-image
+			round
+			width="8rem"
+			height="8rem"
+			src="{{img}}"
+			bind:click="changeimg"
+			/>
+			<text>点击上传头像</text>
+		</view>
+		<van-cell-group style="width: 100%;">
+			<van-field
+				label="店铺昵称"
+				placeholder="请输入您的店铺昵称"
+				input-align="right"
+				bind:input="inputname"
+				value="{{NickName}}"
+			/>
+		</van-cell-group>
+		<view style="width: 100%;margin-bottom: 0;display: flex;justify-content: center;">
+			<van-button type="primary" size="normal" color="#61C4A8" round="true" bindtap="changeOrUpload">确认发布</van-button>
+		</view>
+	</view>
+</van-popup>
+

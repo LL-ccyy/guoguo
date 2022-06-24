@@ -1,0 +1,157 @@
+<wxs module="filters" src="/pages/filter.wxs"></wxs>
+
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab wx:for="{{tabs}}" wx:key="index" title="{{item}}">
+  </van-tab>
+</van-tabs>
+<view class="contianer">
+  <view wx:if="{{orderList.length===0}}" style="width: 750rpx;height: 800rpx;display: flex ;flex-direction: column;justify-content: space-between;align-items: center;">
+    <van-empty description="暂时没有此类订单" />
+  </view>
+  <view wx:for="{{orderList}}" wx:key="index1" class="card-box" data-index="{{index0}}">
+    <van-cell-group border="{{false}}" bindtap="navToOrderDetail" id="{{item._id}}">
+			<van-cell title="{{item.marchantName}}" icon="shop-o" is-link/>
+			<van-cell wx:for="{{item.goodsList}}" wx:for-item="goodsItem" wx:key="index" id="{{index}}">
+				<image class="goods-image" slot="icon" src="{{goodsItem.thumbnail}}"></image>
+				<view class="goods-info-box">
+					<view class="goods-title">
+						{{goodsItem.headline}}
+					</view>
+					<view class="goods-sub-title">
+						{{goodsItem.sortTitle+"	"+goodsItem.sortDetail}}
+					</view>
+					<view class="prz-n-num">
+						<view style="color:red">
+						￥{{filters.toFix(goodsItem.sortPrice)}}
+						</view>
+						<view style="color:black">
+							×{{goodsItem.mount}}
+						</view>
+					</view>
+					<view class="tag" wx:if="{{goodsItem.promotion!=null}}">
+						<van-tag round color="pink" text-color="white">{{goodsItem.promotion}}</van-tag>
+					</view>
+				</view>
+			</van-cell>
+		</van-cell-group>
+		<view	class="card-buttom-box">
+			<view class="subtotal">
+				<text	style="color: black;font-weight: 400; font-size: 14px;">实付款：</text>
+				<text style="color: #FF3737; font-size: 14px;" >￥{{filters.toFix(item.realPayment)}}</text>
+			</view>
+			<view class="btns-box">
+				<van-button round size="small" type="danger" wx:if="{{item.orderStatus === 1}}" bindtap="onPayBtn" id="{{index}}">付款</van-button>
+				<van-button round size="small" wx:elif="{{item.orderStatus === 3}}" data-addr="{{item.addrInfo}}" bindtap="navToWuliu">查看物流</van-button>
+				<van-button round size="small" wx:elif="{{item.orderStatus === 4}}" id="{{item._id}}" bindtap="evaluate">评价</van-button>
+				<van-button round size="small" wx:elif="{{item.orderStatus === 5}}" open-type="contact">客服</van-button>
+				<text style="color:red;font-size: small;" wx:elif="{{item.orderStatus === 6||item.orderStatus === 7}}" >{{item.cancelStatus}}</text>
+				<text style="margin-right: 20rpx;"></text>
+				<van-button round size="small" wx:if="{{item.orderStatus === 1}}" bindtap="cancelOrder" id="{{index}}">取消订单</van-button>
+				<van-button round size="small" wx:elif="{{item.orderStatus === 2}}" bindtap="tixingfahuo" id="{{index}}">提醒发货</van-button>
+				<van-button round size="small" type="danger" wx:elif="{{item.orderStatus === 3}}" bindtap="received" id="{{item._id}}" data-index="{{index}}">确认收货</van-button>
+				<van-button round size="small" wx:elif="{{item.orderStatus === 5}}">处理进度</van-button>
+				<text style="margin-right: 20rpx;"></text>
+				<van-button round size="small" wx:if="{{item.orderStatus === 2}}" bindtap="refond" id="{{index}}">申请退款</van-button>
+			</view>
+		</view>
+		
+  </view>
+</view>
+
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast"/>
+
+
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  custom-style="height: 35%"
+  bind:close="onClose">
+	<view class="main">
+      <van-steps steps="{{ show_step }}" active="{{ active0 }}" direction="vertical" active-color="#29A58D" inactive-color="#000000" active-icon="location"/>
+  </view>
+
+</van-popup>
+
+<van-popup show="{{ cancelBoxShow }}" bind:close="onClosecancelBox" round closeable>
+	<view	class="cancel-box">
+		<view class="cancel-box-headline">
+			<text>订单编号：</text>
+			<text>{{orderList[selectedID].ordernum}}</text>
+		</view>
+		<view class="cancel-box-detail">
+			<van-cell-group border round>
+				<van-collapse value="{{ collapseActiveNames }}" bind:change="onChangeCollapse" accordion border>
+					<van-collapse-item title="退款原因" name="1" value="{{cancelResSelected}}" border>
+						<van-picker 
+							columns="{{ cancelReasons }}" 
+							bind:change="selectcancelRes" 
+							show-toolbar="{{false}}"
+							visible-item-count="3"
+							item-height="30"
+							/>
+					</van-collapse-item>
+				</van-collapse>
+				<!-- <van-divider /> -->
+				<van-field
+					label="其他"
+					value="{{ value }}"
+					placeholder="请输入原因"
+					bind:change="InputOtherReason"
+					required
+					wx:if="{{cancelResIndexSelected===7}}"
+				/>
+				<van-field
+					label="补充描述"
+					value="{{ value2 }}"
+					placeholder="输入详细描述（非必须）"
+					bind:change="InputMoreDes"
+					autosize
+    			type="textarea"
+				/>
+			</van-cell-group>
+
+			<view	class="cancel-button">
+				<view	style="width: 500rpx;">
+					<van-button 
+						round 
+						type="info" 
+						block
+						disabled="{{((cancelResIndexSelected===7&&otherRes===''))||(!userHasSelectRes)}}"
+						bind:click="cancelBtn"
+					>提交</van-button>
+				</view>
+			</view>
+		</view>
+	</view>
+</van-popup>
+
+<van-popup
+  show="{{ payShow }}"
+  round
+	closeable
+	lock-scroll="true"
+  position="bottom"
+	safe-area-inset-bottom="false"
+	safe-area-inset-top="false"
+  custom-style="height: 40%"
+  bind:close="onClose1">
+		<view class="pay-box">
+			<text style="text-align: center;">请输入支付密码</text>
+			<view class="codeindex-box">
+				<view class="codeindex">
+					<view class="code_main">
+						<view class="input_box">
+							<paySix bindinputClick="inputClick" input_value="{{inputData.input_value}}" value_length="{{inputData.value_length}}" isNext="{{inputData.isNext}}" get_focus="{{inputData.get_focus}}" focus_class="{{inputData.focus_class}}" value_num="{{inputData.value_num}}"
+								height="{{inputData.height}}" width="{{inputData.width}}" see="{{inputData.see}}" interval="{{inputData.interval}}">
+							</paySix>
+				
+						</view>
+					</view>
+				</view>
+			</view>
+			<view	class="pay-buttom">
+				<van-button type="primary" size="large" round bindtap="payNow">支付</van-button>
+			</view>
+		</view>
+</van-popup>

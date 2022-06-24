@@ -1,0 +1,121 @@
+{
+  "pages": [
+    "pages/start/start",
+    "pages/choose/choose",
+    "pages/index/index",
+    "pages/goods_detail/index",
+    "pages/cart/index",
+    "pages/pay/index",
+    "pages/user/index",
+    "pages/search/search",
+    "pages/trans_final/trans_final",
+    "pages/orders/index",
+    "pages/orders_merchant/index",
+    "pages/address/address_choose/index",
+    "pages/store_system/index",
+    "pages/store_system/good_set/index",
+    "pages/fruit_types/index",
+    "pages/store/index",
+    "pages/evaluate/evaluate",
+    "pages/comments/comments",
+    "pages/searchlist/searchlist",
+    "pages/favourite/favourite",
+    "pages/chat/chat",
+    "pages/chat/chatHistory/chatHis",
+    "pages/shangjia/index/index",
+    "pages/shangjia/passage/index",
+    "pages/shangjia/users/users",
+    "pages/mygoods/mygoods",
+    "pages/video/video"
+  ],
+
+  "subPackages": [
+    
+  ],
+
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#CCFFCC",
+    "navigationBarTitleText": "菓菓集市",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#858585",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#92d464",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedIconPath": "./images/homepage-alive.png",
+        "iconPath": "./images/homepage.png"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "text": "购物车",
+        "selectedIconPath": "./images/shopping-alive.png",
+        "iconPath": "./images/shopping.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "selectedIconPath": "./images/mine-alive.png",
+        "iconPath": "./images/mine.png"
+      },
+              {
+          "pagePath": "pages/chat/chatHistory/chatHis",
+          "iconPath": "./images/chat.png",
+          "selectedIconPath": "./images/chat-alive.png",
+          "text": "消息"
+        }, {
+          "pagePath": "pages/store_system/index",
+          "iconPath": "./images/mine.png",
+          "selectedIconPath": "./images/mine-alive.png",
+          "text": "我的"
+        }
+    ]
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-sticky": "@vant/weapp/sticky/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-config-provider": "@vant/weapp/config-provider/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-share-sheet": "@vant/weapp/share-sheet/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-steps": "@vant/weapp/steps/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
+  },
+
+                    
+
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取你当前位置信息用于小程序位置接口的效果展示"
+    }
+  }
+}

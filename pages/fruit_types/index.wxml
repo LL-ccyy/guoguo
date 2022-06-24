@@ -1,0 +1,25 @@
+<wxs module="filters" src="/pages/filter.wxs"></wxs>
+
+<van-sidebar active-key="{{ activeKey }}" bind:change="onSideBarChange">
+  <van-sidebar-item wx:for="{{fruitTypes}}" title="{{item}}" wx:key="index" />
+</van-sidebar>
+<view class="goods-show-container">
+  <van-grid column-num="2" gutter="3" use-slot="true">
+    <van-grid-item use-slot wx:for="{{ goodsToShow }}" wx:key="index" custom-style="border-radius:20rpx">
+      <view bindtap="navToDetailPage" class="goods-box" id="{{item._id}}">
+        <view class="img-box">
+          <image
+              style="width: 250rpx; height: 250rpx;"
+              src="{{item.thumbnail}}"
+          />
+        </view>
+        <view class="text-container">
+          <view class="first-line">
+            <view class="goods-title-text">{{item.headline}}</view>
+            <view style="color: red; font-size: medium;">￥{{filters.toFix(item.price)}}</view>
+          </view>
+        </view>
+      </view>
+    </van-grid-item>
+  </van-grid>
+</view>

@@ -1,0 +1,13 @@
+{
+  "navigationBarBackgroundColor": "#A1F3C3",
+  "navigationBarTitleText": "商家系统",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-popup": "@vant/weapp/popup/index"
+ 
+  }
+}

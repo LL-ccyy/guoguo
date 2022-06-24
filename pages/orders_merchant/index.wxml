@@ -1,0 +1,148 @@
+<wxs module="filters" src="/pages/filter.wxs"></wxs>
+
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab wx:for="{{tabs}}" wx:key="index" title="{{item}}">
+  </van-tab>
+</van-tabs>
+<view class="contianer">
+  <view wx:if="{{orderList.length===0}}" style="width: 750rpx;height: 800rpx;display: flex ;flex-direction: column;justify-content: space-between;align-items: center;">
+    <van-empty description="暂时没有此类订单" />
+  </view>
+  <view wx:for="{{orderList}}" wx:key="index1" class="card-box">
+    <van-cell-group border="{{false}}" bindtap="navToWuliu" id="{{item._id}}">
+			<!-- <van-cell title="开发者测试商铺" icon="shop-o" is-link/> -->
+			<van-cell wx:for="{{item.goodsList}}" wx:for-item="goodsItem" wx:key="index" id="{{index}}">
+				<image class="goods-image" slot="icon" src="{{goodsItem.thumbnail}}"></image>
+				<view class="goods-info-box">
+					<view class="goods-title">
+						{{goodsItem.headline}}
+					</view>
+					<view class="goods-sub-title">
+						{{goodsItem.sortTitle+"	"+goodsItem.sortDetail}}
+					</view>
+					<view class="prz-n-num">
+						<view style="color:red">
+						￥{{filters.toFix(goodsItem.sortPrice)}}
+						</view>
+						<view style="color:black">
+							×{{goodsItem.mount}}
+						</view>
+					</view>
+					<view class="tag" wx:if="{{goodsItem.promotion!=null}}">
+						<van-tag round color="pink" text-color="white">{{goodsItem.promotion}}</van-tag>
+					</view>
+				</view>
+			</van-cell>
+		</van-cell-group>
+		<view	class="card-buttom-box">
+			<view class="subtotal">
+				<text	style="color: black;font-weight: 400; font-size: 14px;">实付款：</text>
+				<text style="color: #FF3737; font-size: 14px;" >￥{{filters.toFix(item.realPayment)}}</text>
+			</view>
+			<view class="btns-box">
+				<van-button round size="small" wx:if="{{item.orderStatus === 1}}" bindtap="tixingfukuan">提醒付款</van-button>
+				<van-button round size="small" type="danger" wx:elif="{{item.orderStatus === 2}}" bindtap="sentClick" id="{{index}}">发货</van-button>
+				<van-button round size="small" wx:elif="{{item.orderStatus === 3}}" bindtap="navToWuliu" id="{{item._id}}">查看物流</van-button>
+				<text wx:elif="{{item.orderStatus === 4}}" style="color:lightgreen;font-size: small;">已完成</text>
+				<text style="color:red;font-size: small;" wx:elif="{{item.orderStatus === 7}}" >{{item.cancelStatus}}</text>
+				<!-- <van-button round size="small" wx:elif="{{item.orderStatus === 4}}">评价</van-button> -->
+				<van-button round size="small" wx:elif="{{item.orderStatus === 6}}" bindtap="handleRefond" id="{{index}}">处理</van-button>
+			</view>
+		</view>
+		
+  </view>
+</view>
+
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast"/>
+<van-popup show="{{ handleBoxShow }}" bind:close="onCloseHandleBox" round closeable>
+	<view	class="sent-box">
+		<view class="sent-box-headline">
+			<text>订单编号：</text>
+			<text>{{orderList[selectedID].ordernum}}</text>
+		</view>
+		<view class="sent-box-detail">
+			<van-cell-group border round>
+				<van-cell title="申请原因" value="{{orderList[selectedID].cancelReason}}" border="{{ false }}" />
+				<van-cell title="补充描述" label="{{orderList[selectedID].cancelDescription}}" border="{{ false }}" />
+			</van-cell-group>
+
+			<view	class="sent-button">
+				<view	style="width: 500rpx;">
+					<van-button 
+						round 
+						type="info" 
+						block
+						bindtap="agreeRefond"
+					>同意退款</van-button>
+				</view>
+			</view>
+		</view>
+	</view>
+</van-popup>
+
+<van-popup show="{{ sentBoxShow }}" bind:close="onCloseSentBox" round closeable>
+	<view	class="sent-box" wx:if="{{orderList[selectedID].deliveryMethod==='快递'}}">
+		<view class="sent-box-headline">
+			<text>订单编号：</text>
+			<text>{{orderList[selectedID].ordernum}}</text>
+		</view>
+		<view class="sent-box-detail">
+			<van-cell-group border round>
+				<van-collapse value="{{ collapseActiveNames }}" bind:change="onChangeCollapse" accordion border>
+					<van-collapse-item title="物流公司" name="1" value="{{expNameSelected}}" border>
+						<van-picker 
+							columns="{{ expNames }}" 
+							bind:change="selectExpNames" 
+							show-toolbar="{{false}}"
+							visible-item-count="3"
+							item-height="30"
+							/>
+					</van-collapse-item>
+				</van-collapse>
+				<!-- <van-divider /> -->
+				<van-field
+					label="物流编号"
+					value="{{ value }}"
+					placeholder="请输入物流编号"
+					bind:change="InputExpNum"
+					type="number"
+				/>
+			</van-cell-group>
+
+			<view	class="sent-button">
+				<view	style="width: 500rpx;">
+					<van-button 
+						round 
+						type="info" 
+						block
+						disabled="{{expNum===''||!userHasSelectExp}}"
+						bindtap="sentBtn"
+					>发货</van-button>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="sent-box"  wx:else>
+		<view class="sent-box-headline">
+			<text>订单编号：</text>
+			<text>{{orderList[selectedID].ordernum}}</text>
+		</view>
+		<view	style="top:200rpx;padding-left:100rpx;width:680rpx;position: absolute;">
+			<van-checkbox value="{{ sentCheck }}" shape="square" bind:change="onChangeSentCheck" style="top:200rpx;">
+				已线下联系买家，并完成交易
+			</van-checkbox>
+		</view>
+		<view	class="sent-button">
+				<view	style="width: 500rpx;">
+					<van-button 
+						round 
+						type="info" 
+						block
+						disabled="{{!sentCheck}}"
+						bindtap="sentBtnWithoutInfo"
+					>发货</van-button>
+				</view>
+			</view>
+	</view>
+</van-popup>

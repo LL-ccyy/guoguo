@@ -1,0 +1,82 @@
+.item-study{
+  width: 100%;
+}
+.inline-stydy{
+  width: 90%;
+  height: 150rpx;
+  background-color:white;
+  position: relative;
+  left: 30rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  display: block;
+}
+.video-study{
+  width: 90%;
+  height: 200rpx;
+  background-color:white;
+  position: relative;
+  left: 30rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  display: flex;
+}
+.titles-item{
+ height: 100rpx;
+ margin-top: 20rpx;
+}
+.time-item{
+  height: 50rpx;
+}
+.titles-item,.time-item{
+  position: relative;
+  width: 95%;
+  margin-left: 20rpx;
+}
+.item-txt{
+  font-size: small;
+}
+.item-show{
+  font-size: x-small;
+  color: gray;
+}
+.null{
+  width: 100%;
+  height: 48px;
+  margin-bottom: 40rpx;
+}
+/* 视频学习 */
+.video-img{
+  align-self: center;
+  margin-left: 10rpx;
+  width: 250rpx;
+  height: 180rpx;
+}
+
+.item-img{
+  align-self: center;
+  margin-left: 10rpx;
+  width: 250rpx;
+  height: 180rpx;
+}
+.video-title{
+  width: 100%;
+  height: 100rpx;
+  margin:20rpx 0 0 20rpx;
+}
+.video-time{
+  width: 100%;
+  height: 40rpx;
+  margin: 20rpx 0 20rpx 20rpx;
+}
+.right{
+ width: 55%;
+ height: 200rpx;
+ display: block;
+}
+.txt-title{
+  font-size: 30rpx;
+}
+.txt-time{
+  font-size: small;
+}
